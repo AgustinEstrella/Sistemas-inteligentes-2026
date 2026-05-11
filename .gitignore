@@ -11,3 +11,4 @@
 
 #Gitignore
 *.idea/
+*.class

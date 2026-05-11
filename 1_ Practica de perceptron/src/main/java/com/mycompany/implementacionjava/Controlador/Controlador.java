@@ -46,6 +46,7 @@ public class Controlador implements ActionListener {
 
         view.setTitle("PERCEPTRÓN GOL / NO GOL");
         view.setLocationRelativeTo(null);
+        view.editarAccesoPrueba(false);
 
     }
 
@@ -61,43 +62,45 @@ public class Controlador implements ActionListener {
 
             if (perceptronGol.getFila() == 4) {
 
-                view.jlbEstado.setText("ENTRENAMIENTO COMPLETADO");
+                view.textoEstado.setText("ENTRENAMIENTO COMPLETADO");
+                view.editarAccesoPrueba(true);
 
             } else {
 
-                view.jlbEstado.setText("ENTRENAMIENTO EN PROCESO");
+                view.textoEstado.setText("ENTRENAMIENTO EN PROCESO");
+                view.editarAccesoPrueba(false);
 
             }
 
             // MOSTRAR ENTRADAS
-            view.jlbEntrada1.setText(
+            view.textoEntrada1.setText(
                     "Potencia: "
                     + Float.toString(perceptronGol.getEntradas(1))
             );
 
-            view.jlbEntrada2.setText(
+            view.textoEntrada2.setText(
                     "Direccion: "
                     + Float.toString(perceptronGol.getEntradas(2))
             );
 
             // MOSTRAR PESOS
-            view.jlbPeso1.setText(
+            view.textoPeso1.setText(
                     "Peso 1: "
                     + Float.toString(perceptronGol.getW1())
             );
 
-            view.jlbPeso2.setText(
+            view.textoPeso2.setText(
                     "Peso 2: "
                     + Float.toString(perceptronGol.getW2())
             );
 
-            view.jlbUmbral.setText(
+            view.textoInfoUmbral.setText(
                     "Umbral: "
                     + Float.toString(perceptronGol.getW0())
             );
 
             // MOSTRAR SALIDAS
-            view.jlbSalidaDeseada.setText(
+            view.textoSalidaDeseada.setText(
                     "Salida Deseada: "
                     + Float.toString(
                             perceptronGol.getSalidas(
@@ -106,7 +109,7 @@ public class Controlador implements ActionListener {
                     )
             );
 
-            view.jlbSalidaObtenida.setText(
+            view.textoSalidaObtenida.setText(
                     "Salida Obtenida: "
                     + Float.toString(perceptronGol.getY())
             );
@@ -186,8 +189,8 @@ public class Controlador implements ActionListener {
         // =========================
         if (e.getSource() == view.btnPrueba) {
 
-            String entrada1 = view.jtfEntrada1.getText();
-            String entrada2 = view.jtfEntrada2.getText();
+            String entrada1 = view.ingresoEntrada1.getText();
+            String entrada2 = view.ingresoEntrada2.getText();
 
             boolean bandera = false;
 
@@ -221,7 +224,7 @@ public class Controlador implements ActionListener {
                                 Integer.parseInt(entrada2)
                         );
 
-                view.jlbSalidaPrueba.setText(
+                view.textoSalidaPrueba.setText(
                         "Resultado: " + resultado
                 );
 

@@ -18,34 +18,34 @@ public class Ventana extends javax.swing.JFrame {
         btnEntrenamiento = new javax.swing.JButton();
         btnAprendizaje = new javax.swing.JButton();
 
-        jlbEstado = new javax.swing.JLabel();
+        textoEstado = new javax.swing.JLabel();
 
-        jlbEntrada1 = new javax.swing.JLabel();
-        jlbEntrada2 = new javax.swing.JLabel();
+        textoEntrada1 = new javax.swing.JLabel();
+        textoEntrada2 = new javax.swing.JLabel();
 
-        jLabel4 = new javax.swing.JLabel();
+        textoInfoConversionBinario = new javax.swing.JLabel();
 
-        jlbPeso1 = new javax.swing.JLabel();
-        jlbPeso2 = new javax.swing.JLabel();
+        textoPeso1 = new javax.swing.JLabel();
+        textoPeso2 = new javax.swing.JLabel();
 
-        jlbUmbral = new javax.swing.JLabel();
+        textoInfoUmbral = new javax.swing.JLabel();
 
-        jlbSalidaDeseada = new javax.swing.JLabel();
-        jlbSalidaObtenida = new javax.swing.JLabel();
+        textoSalidaDeseada = new javax.swing.JLabel();
+        textoSalidaObtenida = new javax.swing.JLabel();
 
-        jtfEntrada1 = new javax.swing.JTextField();
-        jtfEntrada2 = new javax.swing.JTextField();
+        ingresoEntrada1 = new javax.swing.JTextField();
+        ingresoEntrada2 = new javax.swing.JTextField();
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        textoEntrada1 = new javax.swing.JLabel();
+        textoEntrada2 = new javax.swing.JLabel();
 
-        jLabel3 = new javax.swing.JLabel();
+        textoTituloPrueba = new javax.swing.JLabel();
 
-        jlbSalidaPrueba = new javax.swing.JLabel();
+        textoSalidaPrueba = new javax.swing.JLabel();
 
         btnPrueba = new javax.swing.JButton();
 
-        jLabel5 = new javax.swing.JLabel();
+        textoInfoAprendizaje = new javax.swing.JLabel();
 
         jLabelInfo = new javax.swing.JLabel();
 
@@ -65,50 +65,50 @@ public class Ventana extends javax.swing.JFrame {
         // ==========================================
         // ESTADO
         // ==========================================
-        jlbEstado.setFont(new java.awt.Font("Dialog", 1, 14));
-        jlbEstado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlbEstado.setText("ENTRENAR EL PERCEPTRON PARA DETECTAR GOL");
+        textoEstado.setFont(new java.awt.Font("Dialog", 1, 14));
+        textoEstado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        textoEstado.setText("ENTRENAR EL PERCEPTRON PARA DETECTAR GOL");
 
         // ==========================================
         // LABELS DE ENTRENAMIENTO
         // ==========================================
-        jlbEntrada1.setText("Potencia:");
-        jlbEntrada2.setText("Direccion:");
+        textoEntrada1.setText("Potencia:");
+        textoEntrada2.setText("Direccion:");
 
-        jLabel4.setText("Entrada 0: 1");
+        textoInfoConversionBinario.setText("Entrada 0: 1");
 
-        jlbPeso1.setText("Peso 1:");
-        jlbPeso2.setText("Peso 2:");
+        textoPeso1.setText("Peso 1:");
+        textoPeso2.setText("Peso 2:");
 
-        jlbUmbral.setText("Umbral:");
+        textoInfoUmbral.setText("Umbral:");
 
-        jlbSalidaDeseada.setText("Salida Deseada:");
-        jlbSalidaObtenida.setText("Salida Obtenida:");
+        textoSalidaDeseada.setText("Salida Deseada:");
+        textoSalidaObtenida.setText("Salida Obtenida:");
 
         // ==========================================
         // INPUTS
         // ==========================================
-        jtfEntrada1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        ingresoEntrada1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        jtfEntrada2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        ingresoEntrada2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         // ==========================================
         // LABELS DE PRUEBA
         // ==========================================
-        jLabel1.setText("Potencia");
+        textoEntrada1.setText("Potencia");
 
-        jLabel2.setText("Direccion");
+        textoEntrada2.setText("Direccion");
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 13));
-        jLabel3.setText("PROBAR SI LA JUGADA ES GOL");
+        textoTituloPrueba.setFont(new java.awt.Font("Dialog", 1, 13));
+        textoTituloPrueba.setText("PROBAR SI LA JUGADA ES GOL");
 
-        jlbSalidaPrueba.setFont(new java.awt.Font("Dialog", 1, 12));
-        jlbSalidaPrueba.setText("Resultado:");
+        textoSalidaPrueba.setFont(new java.awt.Font("Dialog", 1, 12));
+        textoSalidaPrueba.setText("Resultado:");
 
         // ==========================================
         // INFO
         // ==========================================
-        jLabel5.setText("Factor Aprendizaje: 0.6");
+        textoInfoAprendizaje.setText("Factor Aprendizaje: 0.6");
 
         jLabelInfo.setText(
                 "<html>"
@@ -192,7 +192,7 @@ public class Ventana extends javax.swing.JFrame {
                                         javax.swing.GroupLayout.Alignment.CENTER
                                 )
 
-                                        .addComponent(jlbEstado)
+                                        .addComponent(textoEstado)
 
                                         .addGroup(layout.createSequentialGroup()
 
@@ -200,14 +200,14 @@ public class Ventana extends javax.swing.JFrame {
                                                         javax.swing.GroupLayout.Alignment.CENTER
                                                 )
 
-                                                        .addComponent(jlbEntrada1)
-                                                        .addComponent(jlbPeso1)
-                                                        .addComponent(jlbSalidaDeseada)
+                                                        .addComponent(textoEntrada1)
+                                                        .addComponent(textoPeso1)
+                                                        .addComponent(textoSalidaDeseada)
 
-                                                        .addComponent(jLabel1)
+                                                        .addComponent(textoEntrada1)
 
                                                         .addComponent(
-                                                                jtfEntrada1,
+                                                                ingresoEntrada1,
                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                 100,
                                                                 javax.swing.GroupLayout.PREFERRED_SIZE
@@ -220,14 +220,14 @@ public class Ventana extends javax.swing.JFrame {
                                                         javax.swing.GroupLayout.Alignment.CENTER
                                                 )
 
-                                                        .addComponent(jlbEntrada2)
-                                                        .addComponent(jlbPeso2)
-                                                        .addComponent(jlbSalidaObtenida)
+                                                        .addComponent(textoEntrada2)
+                                                        .addComponent(textoPeso2)
+                                                        .addComponent(textoSalidaObtenida)
 
-                                                        .addComponent(jLabel2)
+                                                        .addComponent(textoEntrada2)
 
                                                         .addComponent(
-                                                                jtfEntrada2,
+                                                                ingresoEntrada2,
                                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                                 100,
                                                                 javax.swing.GroupLayout.PREFERRED_SIZE
@@ -240,16 +240,16 @@ public class Ventana extends javax.swing.JFrame {
                                                         javax.swing.GroupLayout.Alignment.CENTER
                                                 )
 
-                                                        .addComponent(jLabel4)
-                                                        .addComponent(jlbUmbral)
-                                                        .addComponent(jLabel5)
-                                                        .addComponent(jlbSalidaPrueba)
+                                                        .addComponent(textoInfoConversionBinario)
+                                                        .addComponent(textoInfoUmbral)
+                                                        .addComponent(textoInfoAprendizaje)
+                                                        .addComponent(textoSalidaPrueba)
                                                 )
                                         )
 
                                         .addGap(20, 20, 20)
 
-                                        .addComponent(jLabel3)
+                                        .addComponent(textoTituloPrueba)
 
                                         .addGap(15, 15, 15)
 
@@ -277,7 +277,7 @@ public class Ventana extends javax.swing.JFrame {
 
                                 .addGap(20, 20, 20)
 
-                                .addComponent(jlbEstado)
+                                .addComponent(textoEstado)
 
                                 .addGap(30, 30, 30)
 
@@ -306,9 +306,9 @@ public class Ventana extends javax.swing.JFrame {
                                                         javax.swing.GroupLayout.Alignment.BASELINE
                                                 )
 
-                                                        .addComponent(jlbEntrada1)
-                                                        .addComponent(jlbEntrada2)
-                                                        .addComponent(jLabel4)
+                                                        .addComponent(textoEntrada1)
+                                                        .addComponent(textoEntrada2)
+                                                        .addComponent(textoInfoConversionBinario)
                                                 )
 
                                                 .addGap(20, 20, 20)
@@ -317,9 +317,9 @@ public class Ventana extends javax.swing.JFrame {
                                                         javax.swing.GroupLayout.Alignment.BASELINE
                                                 )
 
-                                                        .addComponent(jlbPeso1)
-                                                        .addComponent(jlbPeso2)
-                                                        .addComponent(jlbUmbral)
+                                                        .addComponent(textoPeso1)
+                                                        .addComponent(textoPeso2)
+                                                        .addComponent(textoInfoUmbral)
                                                 )
 
                                                 .addGap(20, 20, 20)
@@ -328,16 +328,16 @@ public class Ventana extends javax.swing.JFrame {
                                                         javax.swing.GroupLayout.Alignment.BASELINE
                                                 )
 
-                                                        .addComponent(jlbSalidaDeseada)
-                                                        .addComponent(jlbSalidaObtenida)
-                                                        .addComponent(jLabel5)
+                                                        .addComponent(textoSalidaDeseada)
+                                                        .addComponent(textoSalidaObtenida)
+                                                        .addComponent(textoInfoAprendizaje)
                                                 )
                                         )
                                 )
 
                                 .addGap(30, 30, 30)
 
-                                .addComponent(jLabel3)
+                                .addComponent(textoTituloPrueba)
 
                                 .addGap(20, 20, 20)
 
@@ -345,8 +345,8 @@ public class Ventana extends javax.swing.JFrame {
                                         javax.swing.GroupLayout.Alignment.BASELINE
                                 )
 
-                                        .addComponent(jLabel1)
-                                        .addComponent(jLabel2)
+                                        .addComponent(textoEntrada1)
+                                        .addComponent(textoEntrada2)
                                 )
 
                                 .addGap(10, 10, 10)
@@ -356,20 +356,20 @@ public class Ventana extends javax.swing.JFrame {
                                 )
 
                                         .addComponent(
-                                                jtfEntrada1,
+                                                ingresoEntrada1,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE
                                         )
 
                                         .addComponent(
-                                                jtfEntrada2,
+                                                ingresoEntrada2,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                                 javax.swing.GroupLayout.PREFERRED_SIZE
                                         )
 
-                                        .addComponent(jlbSalidaPrueba)
+                                        .addComponent(textoSalidaPrueba)
                                 )
 
                                 .addGap(20, 20, 20)
@@ -428,34 +428,38 @@ public class Ventana extends javax.swing.JFrame {
     // Variables declaration
     public javax.swing.JButton btnAprendizaje;
     public javax.swing.JButton btnEntrenamiento;
-    public javax.swing.JButton btnPrueba;
 
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel textoInfoConversionBinario;
+    private javax.swing.JLabel textoInfoAprendizaje;
 
     private javax.swing.JLabel jLabelInfo;
 
-    public javax.swing.JLabel jlbEntrada1;
-    public javax.swing.JLabel jlbEntrada2;
+    //Seccion prueba despues de haber aprendido
+    public javax.swing.JButton btnPrueba;
+    private javax.swing.JLabel textoTituloPrueba;
+    public javax.swing.JLabel textoEntrada1;
+    public javax.swing.JLabel textoEntrada2;
+    public javax.swing.JTextField ingresoEntrada1;
+    public javax.swing.JTextField ingresoEntrada2;
 
-    public javax.swing.JLabel jlbEstado;
+    public javax.swing.JLabel textoEstado;
 
-    public javax.swing.JLabel jlbPeso1;
-    public javax.swing.JLabel jlbPeso2;
+    public javax.swing.JLabel textoPeso1;
+    public javax.swing.JLabel textoPeso2;
 
-    public javax.swing.JLabel jlbSalidaDeseada;
-    public javax.swing.JLabel jlbSalidaObtenida;
-    public javax.swing.JLabel jlbSalidaPrueba;
+    public javax.swing.JLabel textoSalidaDeseada;
+    public javax.swing.JLabel textoSalidaObtenida;
+    public javax.swing.JLabel textoSalidaPrueba;
 
-    public javax.swing.JLabel jlbUmbral;
+    public javax.swing.JLabel textoInfoUmbral;
 
-    public javax.swing.JTextField jtfEntrada1;
-    public javax.swing.JTextField jtfEntrada2;
 
     public javax.swing.JPanel panelGrafico;
 
     // End of variables declaration
+    public void editarAccesoPrueba(boolean llave){
+        ingresoEntrada1.setEditable(llave);
+        ingresoEntrada2.setEditable(llave);
+        btnPrueba.setEnabled(llave);
+    }
 }
