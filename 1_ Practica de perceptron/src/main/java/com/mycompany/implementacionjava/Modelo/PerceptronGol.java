@@ -2,17 +2,17 @@ package com.mycompany.implementacionjava.Modelo;
 
 import java.util.Random;
 
-public class PerceptronSimpleAND {
+public class PerceptronGol {
 
     // Tabla de verdad AND
     // la columna 0 sirve para que no se rompa al aplicar la formula de aprendizaje
     // columna 1 y 2 son los valores de la tabla
     private float[][] entradas = {
-                                {1f, 1f, 1f},
-                                {1f, 1f, -1f},
-                                {1f, -1f, 1f},
-                                {1f, -1f, -1f}
-                                 };
+    {1f, 1f, 1f},     // tiro fuerte y al arco = GOL
+    {1f, 1f, -1f},    // fuerte pero afuera = NO GOL
+    {1f, -1f, 1f},    // débil pero al arco = NO GOL
+    {1f, -1f, -1f}    // débil y afuera = NO GOL
+ };
 
     //Variable para los resultados
     private float[] salidas = new float[4];
@@ -28,11 +28,13 @@ public class PerceptronSimpleAND {
     private boolean bandera = true;
 
     // Valores para los resultados esperados
-    public PerceptronSimpleAND () {
-        this.salidas[0] = 1f;
-        this.salidas[1] = -1f;
-        this.salidas[2] = -1f;
-        this.salidas[3] = -1f;
+    public PerceptronGol () {
+     // 1 = GOL
+     // -1 = NO GOL
+     this.salidas[0] = 1f;
+     this.salidas[1] = -1f;
+     this.salidas[2] = -1f;
+     this.salidas[3] = -1f;
     }
     
     public float getEntradas(int X) {
@@ -140,7 +142,7 @@ public class PerceptronSimpleAND {
         if (bandera == true) {
 
             //Comienzo bucle
-            System.out.println("PERCEPTRON AND");
+            System.out.println("PERCEPTRON GOL / NO GOL");
             System.out.println("Factor de Aprendizaje: " + factorAprendizaje);
             System.out.println("Umbral: " + w0);
             System.out.println("Peso 1: " + w1);
@@ -227,20 +229,15 @@ public class PerceptronSimpleAND {
 
     }
 
-    public float PruebaFuncionamiento(int entrada1, int entrada2) {
+    public String PruebaFuncionamiento(int entrada1, int entrada2) {
 
-        y = (w0 * 1) + (w1 * entrada1) + (w2 * entrada2);
-        
-        if (y > 0) {
-            y = 1;
-        } else {
-            if (y <= 0) {
-                y = -1;
-            }
-        }
-        
-        return y;
+     y = (w0 * 1) + (w1 * entrada1) + (w2 * entrada2);
 
+     if (y > 0) {
+        return "GOL";
+     } else {
+        return "NO GOL";
+     }
     }
     
 }

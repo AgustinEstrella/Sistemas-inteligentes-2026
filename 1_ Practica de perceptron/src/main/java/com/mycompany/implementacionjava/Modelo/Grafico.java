@@ -103,10 +103,10 @@ public class Grafico {
         return switch (index) {
             case 0 -> Color.BLACK; // ejeX
             case 1 -> Color.BLACK; // ejeY
-            case 2 -> Color.RED; // puntoB1
-            case 3 -> Color.GREEN; // puntoA1
-            case 4 -> Color.YELLOW; // puntoA2
-            case 5 -> Color.BLUE; // puntoA3
+            case 2 -> Color.GREEN; // puntoB1
+            case 3 -> Color.RED; // puntoA1
+            case 4 -> Color.RED; // puntoA2
+            case 5 -> Color.RED; // puntoA3
             case 6 -> Color.CYAN; // recta
             default -> Color.BLACK;
         }; 
