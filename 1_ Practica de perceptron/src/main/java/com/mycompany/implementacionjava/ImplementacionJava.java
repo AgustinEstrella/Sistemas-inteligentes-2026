@@ -3,7 +3,7 @@ package com.mycompany.implementacionjava;
 import com.mycompany.implementacionjava.Controlador.Controlador;
 import com.mycompany.implementacionjava.Vista.Ventana;
 import com.mycompany.implementacionjava.Modelo.Grafico;
-import com.mycompany.implementacionjava.Modelo.PerceptronSimpleAND;
+import com.mycompany.implementacionjava.Modelo.PerceptronGol;
 
 public class ImplementacionJava {
 
@@ -11,7 +11,7 @@ public class ImplementacionJava {
         
         Ventana view = new Ventana();
         Grafico grafico = new Grafico();
-        PerceptronSimpleAND perceptronSimpleAND = new PerceptronSimpleAND();
+        PerceptronGol perceptronSimpleAND = new PerceptronGol();
         
         Controlador ctrl = new Controlador(view, grafico, perceptronSimpleAND);
         
