@@ -4,240 +4,197 @@ import java.util.Random;
 
 public class PerceptronGol {
 
-    // Tabla de verdad AND
-    // la columna 0 sirve para que no se rompa al aplicar la formula de aprendizaje
-    // columna 1 y 2 son los valores de la tabla
+    // ENTRADAS:
+    // [1, defendida(si o no), potencia(despacio o fuerte), dirección: va al arco(si o no)]
+
     private float[][] entradas = {
-    {1f, 1f, 1f},     // tiro fuerte y al arco = GOL
-    {1f, 1f, -1f},    // fuerte pero afuera = NO GOL
-    {1f, -1f, 1f},    // débil pero al arco = NO GOL
-    {1f, -1f, -1f}    // débil y afuera = NO GOL
- };
 
-    //Variable para los resultados
-    private float[] salidas = new float[4];
+            {1f, -1f, -1f, -1f}, // No se la defiende, le pega despacio, no va al arco === NO ES GOL
+            {1f, -1f, -1f,  1f}, // No se la defiende, le pega despacio, va al arco === NO ES GOL
+            {1f, -1f,  1f, -1f}, // No se la defiende, le pega fuerte, no va al arco === NO ES GOL
+            {1f, -1f,  1f,  1f}, // No se la defiende, le pega fuerte, va al arco === GOL
+            {1f,  1f, -1f, -1f}, // Se la defiende, le pega despacio, no va al arco === NO ES GOL
+            {1f,  1f, -1f,  1f}, // Se la defiende, le pega despacio, va al arco === NO ES GOL
+            {1f,  1f,  1f, -1f}, // Se la defiende, le pega fuerte, no va al arco === NO ES GOL
+            {1f,  1f,  1f,  1f}, // Se la defiende, le pega fuerte, va al arco === NO ES GOL
 
-    private float factorAprendizaje = (float) 0.6;
+    };
+
+    private float[] salidas = new float[8];
+
+    public PerceptronGol(){
+        this.salidas[0] = -1f;
+        this.salidas[1] = -1f;
+        this.salidas[2] = -1f;
+        this.salidas[3] =  1f;
+        this.salidas[4] = -1f;
+        this.salidas[5] = -1f;
+        this.salidas[6] = -1f;
+        this.salidas[7] = -1f;
+
+    }
+
+    private float factorAprendizaje = 0.6f;
+
+    // PESOS
     private float w0 = new Random().nextFloat();
     private float w1 = new Random().nextFloat();
     private float w2 = new Random().nextFloat();
-    private float y = 0.0f;
-    private float error = 0.0f;
+    private float w3 = new Random().nextFloat();
+
+    private float y = 0f;
+    private float error = 0f;
+
     private int fila = 0;
     private int repeticion = 1;
+
     private boolean bandera = true;
 
-    // Valores para los resultados esperados
-    public PerceptronGol () {
-     // 1 = GOL
-     // -1 = NO GOL
-     this.salidas[0] = 1f;
-     this.salidas[1] = -1f;
-     this.salidas[2] = -1f;
-     this.salidas[3] = -1f;
-    }
-    
-    public float getEntradas(int X) {
-        if (fila == 4) {
-            return entradas[3][X];
-        } else {
-            return entradas[fila][X];
-        }   
+    // GETTERS
+
+    public float getEntradas(int x) {
+
+        if (fila == 8) {
+            return entradas[7][x];
+        }
+
+        return entradas[fila][x];
     }
 
-    public void setEntradas(float[][] entradas) {
-        this.entradas = entradas;
-    }
+    public float getSalidas(int x) {
 
-    public float getSalidas(int X) {
-        if (X == 4) {
-            return salidas[3];
-        } else {
-            return salidas[X];
-        }  
-        
-    }
+        if (x == 8) {
+            return salidas[7];
+        }
 
-    public void setSalidas(float[] salidas) {
-        this.salidas = salidas;
-    }
-
-    public float getFactorAprendizaje() {
-        return factorAprendizaje;
-    }
-
-    public void setFactorAprendizaje(float factorAprendizaje) {
-        this.factorAprendizaje = factorAprendizaje;
+        return salidas[x];
     }
 
     public float getW0() {
         return w0;
     }
 
-    public void setW0(float w0) {
-        this.w0 = w0;
-    }
-
     public float getW1() {
         return w1;
-    }
-
-    public void setW1(float w1) {
-        this.w1 = w1;
     }
 
     public float getW2() {
         return w2;
     }
 
-    public void setW2(float w2) {
-        this.w2 = w2;
+    public float getW3() {
+        return w3;
     }
 
     public float getY() {
         return y;
     }
 
-    public void setY(float y) {
-        this.y = y;
-    }
-
     public float getError() {
         return error;
-    }
-
-    public void setError(float error) {
-        this.error = error;
     }
 
     public int getFila() {
         return fila;
     }
 
-    public void setFila(int fila) {
-        this.fila = fila;
-    }
-
     public int getRepeticion() {
         return repeticion;
     }
 
-    public void setRepeticion(int repeticion) {
-        this.repeticion = repeticion;
-    }
- 
-    public boolean getBandera() {
-        return bandera;
-    }
+    // =========================
+    // ENTRENAMIENTO
+    // =========================
 
-    public void setBandera(boolean bandera) {
-        this.bandera = bandera;
-    }
+    public void Entrenamiento() {
 
-//---------------------------------------------------------------------------------//
-    //PROCEDIMIENTOS//
-
-    public void Entrenamiento () {
-        
         if (bandera == true) {
 
-            //Comienzo bucle
-            System.out.println("PERCEPTRON GOL / NO GOL");
-            System.out.println("Factor de Aprendizaje: " + factorAprendizaje);
-            System.out.println("Umbral: " + w0);
-            System.out.println("Peso 1: " + w1);
-            System.out.println("Peso 2: " + w2);
-            System.out.println("");
-            System.out.println("ITERACION: " + repeticion + "-------------------------------------");
+            System.out.println("PERCEPTRON GOL");
 
-            while (fila < 4) {
-                System.out.println("y = (" + w0 + "*" + entradas[fila][0] + ") + (" + w1 + "*" + entradas[fila][1] + ") + (" + w2 + "*" + entradas[fila][2] + ")"); 
-                this.y = w0 * entradas[fila][0] + w1 * entradas[fila][1] + w2 * entradas[fila][2];
-                //La primera multicacion mantiene al umbral en su valor, lo multiplica por 1
+            while (fila < 8) {
 
-                //Resultado de nuestra ecuacion
-                System.out.println("y = " + y);
+                y = (w0 * entradas[fila][0]) + (w1 * entradas[fila][1]) + (w2 * entradas[fila][2]) + (w3 * entradas[fila][3]);
+                System.out.println("Resultado bruto de la funcion: " + y);
 
-                //Agregado mio
-                System.out.println("--------------");
-                System.out.println("Fila: " +fila);
-                System.out.println("--------------");
-                System.out.println();
-                //Agregado mio
+                System.out.println("-------------------");
+                System.out.println("FILA " + (fila+1));
+                System.out.println("-------------------");
 
-                //Estandariza el resultado como "binario" siendo -1 equivalente a 0]
+                // ACTIVACION
+
                 if (y > 0) {
                     this.y = 1;
-                    System.out.println("Como y > 0 entonces");
                 } else {
-                    if (y <= 0) {
-                        this.y = -1;
-                        System.out.println("Como y <= 0 entonces");
-                    }
+                    this.y = -1;
                 }
-                System.out.println("y = " + y);
 
+                error = salidas[fila] - y;
+                System.out.println("Error: " + error);
 
-                //Calculo error
-                this.error = salidas[fila] - y;
-                System.out.println("Error = " + error);
-
-                //Si el error da 0 significa que aprendio, sino vuelve a pedir las entradas para recalcular pesos y umbral
                 if (error == 0f) {
-                    System.out.println("-----------------------------------------------------------");
+
                     this.fila++;
+
                 } else {
+
                     break;
                 }
+
             }
 
-            if (fila == 4) {
-                System.out.println("");
-                System.out.println("---------------------------------");
-                System.out.println("| PESOS FINALES\t\t\t|");
-                System.out.println("| Factor de Aprendizaje: " + factorAprendizaje + "\t|");
-                System.out.println("| Umbral: " + w0 + "\t\t|");
-                System.out.println("| Peso 1: " + w1 + "\t\t|");
-                System.out.println("| Peso 2: " + w2 + "\t\t|");
-                System.out.println("---------------------------------");
-                System.out.println("");
-                
+            if (fila == 8) {
+
                 bandera = false;
+
+                System.out.println("APRENDIZAJE COMPLETADO");
             }
 
-        }          
-    }   
-    
+        }
+
+    }
+
+    // =========================
+    // APRENDIZAJE
+    // =========================
+
     public void Aprendizaje() {
 
-        System.out.println("-----------------------------------------------------------");
-        System.out.println("Recalculamos los Pesos");
+        w0 = w0 + (factorAprendizaje * error * entradas[fila][0]);
 
-        this.w0 = w0 + (factorAprendizaje * (error) * entradas[fila][0]);
-        this.w1 = w1 + (factorAprendizaje * (error) * entradas[fila][1]);
-        this.w2 = w2 + (factorAprendizaje * (error) * entradas[fila][2]);
+        w1 = w1 + (factorAprendizaje * error * entradas[fila][1]);
 
-        System.out.println("Nuevo Umbral = " + w0);
-        System.out.println("Nuevo Peso 1 = " + w1);
-        System.out.println("Nuevo Peso 2 = " + w2);
+        w2 = w2 + (factorAprendizaje * error * entradas[fila][2]);
 
-        this.fila = 0;
-        this.repeticion++;
-        System.out.println("");
-        System.out.println("");
+        w3 = w3 + (factorAprendizaje * error * entradas[fila][3]);
 
+        fila = 0;
+
+        repeticion++;
 
     }
 
-    public String PruebaFuncionamiento(int entrada1, int entrada2) {
+    // =========================
+    // PRUEBA
+    // =========================
 
-     y = (w0 * 1) + (w1 * entrada1) + (w2 * entrada2);
+    public String PruebaFuncionamiento(
+            int defensa,
+            int potencia,
+            int direccion
+    ) {
 
-     if (y > 0) {
-        return "GOL";
-     } else {
+        y =
+                (w0 * 1) +
+                        (w1 * defensa) +
+                        (w2 * potencia) +
+                        (w3 * direccion);
+
+        if (y > 0) {
+            return "GOL";
+        }
+
         return "NO GOL";
-     }
     }
-    
+
 }
