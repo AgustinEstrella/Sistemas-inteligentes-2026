@@ -45,8 +45,7 @@ venv\Scripts\activate
 Con el entorno virtual activado, instala las librerías requeridas:
 
 ```bash
-pip install python-dotenv 
-pip install google-genai
+pip install -r requirements.txt
 ```
 
 ### 5. Configurar las variables de entorno
