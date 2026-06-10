@@ -62,7 +62,5 @@ Obtén tu API Key desde [Google AI Studio](https://aistudio.google.com/app/apike
 ### Ejecutar el asistente
 
 ```bash
-python agente_con_reintentos.py
+python agente.py
 ```
-
-Se mostrará:
